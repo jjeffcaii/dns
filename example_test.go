@@ -9,7 +9,7 @@ import (
 	"net"
 	"time"
 
-	"github.com/benburkert/dns"
+	"github.com/jjeffcaii/dns"
 )
 
 func ExampleClient_overrideNameServers() {

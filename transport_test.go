@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/benburkert/dns/internal/must"
+	"github.com/jjeffcaii/dns/internal/must"
 )
 
 var transportTests = []struct {

@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/benburkert/dns/edns"
+	"github.com/jjeffcaii/dns/edns"
 )
 
 func TestQuestionPackUnpack(t *testing.T) {

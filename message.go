@@ -10,7 +10,7 @@ import (
 	"net"
 	"time"
 
-	"github.com/benburkert/dns/edns"
+	"github.com/jjeffcaii/dns/edns"
 )
 
 var nbo = binary.BigEndian
