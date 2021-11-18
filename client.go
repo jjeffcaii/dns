@@ -6,6 +6,8 @@ import (
 	"sync/atomic"
 )
 
+type QueryFilter func(*Query) bool
+
 // Client is a DNS client.
 type Client struct {
 	// Transport manages connections to DNS servers.
@@ -15,6 +17,9 @@ type Client struct {
 	// Any questions answered by the handler are not sent to the upstream
 	// server.
 	Resolver Handler
+
+	// Filter only process those returns true.
+	Filter QueryFilter
 
 	id uint32
 }
@@ -92,7 +97,7 @@ func (c *Client) dial(ctx context.Context, addr net.Addr) (Conn, error) {
 }
 
 func (c *Client) do(ctx context.Context, conn Conn, query *Query) (*Message, error) {
-	if c.Resolver == nil {
+	if c.Resolver == nil || (c.Filter != nil && !c.Filter(query)) {
 		return c.roundtrip(conn, query)
 	}
 
